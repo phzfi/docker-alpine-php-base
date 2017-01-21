@@ -25,11 +25,11 @@ Our base php project dependencies changes very little so it's divided into own i
 
 ### Build instructions
 
-sudo docker build -t phzfi/alpine-wordpress .
+sudo docker build -t phzfi/alpine-php-base .
 
 Test it out
- phzfi/alpine-wordpress echo "OK"
+sudo docker run phzfi/alpine-php-base echo "OK"
 
 Tag & Push
-sudo docker tag -f phzfi/alpine-wordpress phzfi/alpine-wordpress:latest
-sudo docker push phzfi/alpine-wordpress
+sudo docker tag -f phzfi/alpine-php-base phzfi/alpine-php-base:latest
+sudo docker push phzfi/alpine-php-base
