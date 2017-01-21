@@ -46,10 +46,12 @@ RUN cd /tmp/ && \
     php7-xdebug \
     php7 php7-session php7-fpm php7-json php7-zlib php7-xml php7-pdo \
     php7-gd php7-curl php7-opcache php7-ctype php7-mbstring php7-soap \
-    php7-intl php7-bcmath php7-dom php7-xmlreader php7-openssl php7-phar php7-redis  && \
+    php7-intl php7-bcmath php7-dom php7-xmlreader php7-openssl php7-phar
+    #php7-redis
+
 
     # Small fixes to php & nginx
-    ln -s /etc/php7 /etc/php && \
+RUN ln -s /etc/php7 /etc/php && \
     ln -s /usr/bin/php7 /usr/bin/php && \
     ln -s /usr/sbin/php-fpm7 /usr/bin/php-fpm && \
     ln -s /usr/lib/php7 /usr/lib/php && \
@@ -76,13 +78,13 @@ RUN cd /tmp/ && \
     # https://github.com/kvz/cronlock
     ##
     curl -L https://raw.githubusercontent.com/kvz/cronlock/master/cronlock -o /usr/local/bin/cronlock && \
-    chmod +rx /usr/local/bin/cronlock && \
+    chmod +rx /usr/local/bin/cronlock
 
     ##
     # Install composer
     # source: https://getcomposer.org/download/
     ##
-    curl -L https://getcomposer.org/installer -o composer-setup.php && \
+RUN curl -L https://getcomposer.org/installer -o composer-setup.php && \
     php composer-setup.php && \
     rm  composer-setup.php && \
     mv composer.phar /usr/local/bin/composer && \
@@ -91,17 +93,18 @@ RUN cd /tmp/ && \
     ##
     # Add WP coding standards with php codesniffer
     ##
-    composer create-project wp-coding-standards/wpcs:dev-master --no-interaction --no-dev /var/lib/wpcs && \
+    composer create-project wp-coding-standards/wpcs:dev-master --no-interaction --no-dev /var/lib/wpcs
 
     ##
     # Install ruby + dependencies and integration testing tools
     # - We install build libraries only for this one run so whole image can stay smaller size
     ##
-    apk --update add ruby libxslt && \
-    apk add --virtual build_deps build-base ruby-dev libc-dev linux-headers \
-    openssl-dev postgresql-dev libxml2-dev libxslt-dev && \
-    gem install json rspec rspec-retry poltergeist capybara --no-ri --no-rdoc && \
-    apk del build_deps && \
+RUN apk --update add ruby libxslt
+RUN apk add --virtual build_deps build-base ruby-dev libc-dev linux-headers \
+#    openssl-dev 
+     postgresql-dev libxml2-dev libxslt-dev
+RUN gem install json rspec rspec-retry poltergeist capybara --no-ri --no-rdoc
+RUN apk del build_deps && \
 
     # Remove cache and tmp files
     rm -rf /var/cache/apk/* && \

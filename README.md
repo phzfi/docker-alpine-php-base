@@ -22,3 +22,14 @@ Our base php project dependencies changes very little so it's divided into own i
 
 ### Other
 - ssh client
+
+### Build instructions
+
+sudo docker build -t phzfi/alpine-wordpress .
+
+Test it out
+ phzfi/alpine-wordpress echo "OK"
+
+Tag & Push
+sudo docker tag -f phzfi/alpine-wordpress phzfi/alpine-wordpress:latest
+sudo docker push phzfi/alpine-wordpress
