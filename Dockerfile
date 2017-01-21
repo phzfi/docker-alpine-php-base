@@ -1,6 +1,6 @@
 # Dependency for php7: libwebp library doesn't work correctly with alpine:v3.3 so we are using alpine:edge
 FROM i386/alpine
-MAINTAINER Antti HÃtinen - PHZ Full Stack Oy. <support@phz.fi>
+MAINTAINER Antti Hatinen - PHZ Full Stack Oy. <support@phz.fi>
 
 
 RUN cd /tmp/ && \
