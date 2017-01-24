@@ -7,31 +7,31 @@ RUN cd /tmp/ && \
 
     # Install curl first and dustinblackman/phantomized package
     # This is because if alpine packages share something with dustinblackman/phantomized we can replace those
-    apk --update add curl && \
+    apk --update add curl
 
     ##
     # PhantomJS
     ##
     # Install phantomjs dependencies
-    curl -L "https://github.com/dustinblackman/phantomized/releases/download/2.1.1/dockerized-phantomjs.tar.gz" \
-    | tar xz -C / && \
+RUN curl -L "https://github.com/dustinblackman/phantomized/releases/download/2.1.1/dockerized-phantomjs.tar.gz" \
+    | tar xz -C / 
 
     # Install phantomjs binary
-    curl -L https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 \
+RUN curl -L https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-i686.tar.bz2 \
     | tar -xjC /tmp && \
-    mv /tmp/phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/bin/ && \
-    chmod +rx /usr/local/bin/phantomjs && \
+    mv /tmp/phantomjs-2.1.1-linux-i686/bin/phantomjs /usr/local/bin/ && \
+    chmod +rx /usr/local/bin/phantomjs
 
     # Install dependencies and small amount of devtools
-    apk add bash less vim nano git mysql-client nginx ca-certificates openssh-client \
+RUN apk add bash less vim nano git mysql-client nginx ca-certificates openssh-client \
     # Libs for php
     libssh2 libpng freetype libjpeg-turbo libgcc libxml2 libstdc++ icu-libs libltdl libmcrypt \
     # For mails
     msmtp \
     # Set timezone according your location
-    tzdata && \
+    tzdata
     # Upgrade musl
-    apk add -u musl && \
+RUN apk add -u musl && \
 
     # Install nodejs for building frontend assets
     apk add nodejs && \
