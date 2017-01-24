@@ -31,5 +31,6 @@ Test it out
 sudo docker run phzfi/alpine-php-base echo "OK"
 
 Tag & Push
-sudo docker tag -f phzfi/alpine-php-base phzfi/alpine-php-base:latest
+docker login --username=phzfi
+sudo docker tag phzfi/alpine-php-base phzfi/alpine-php-base:latest
 sudo docker push phzfi/alpine-php-base
