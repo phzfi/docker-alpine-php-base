@@ -13,14 +13,14 @@ RUN cd /tmp/ && \
     # PhantomJS
     ##
     # Install phantomjs dependencies
-RUN curl -L "https://github.com/dustinblackman/phantomized/releases/download/2.1.1/dockerized-phantomjs.tar.gz" \
-    | tar xz -C / 
+#RUN curl -L "https://github.com/dustinblackman/phantomized/releases/download/2.1.1/dockerized-phantomjs.tar.gz" \
+#    | tar xz -C / 
 
     # Install phantomjs binary
-RUN curl -L https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-i686.tar.bz2 \
-    | tar -xjC /tmp && \
-    mv /tmp/phantomjs-2.1.1-linux-i686/bin/phantomjs /usr/local/bin/ && \
-    chmod +rx /usr/local/bin/phantomjs
+#RUN curl -L https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-i686.tar.bz2 \
+#    | tar -xjC /tmp && \
+#    mv /tmp/phantomjs-2.1.1-linux-i686/bin/phantomjs /usr/local/bin/ && \
+#    chmod +rx /usr/local/bin/phantomjs
 
     # Install dependencies and small amount of devtools
 RUN apk add bash less vim nano git mysql-client nginx ca-certificates openssh-client \
